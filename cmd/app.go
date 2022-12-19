@@ -14,7 +14,12 @@ func main() {
 		log.Fatalf("Error reading configs, %s", err.Error())
 	}
 
-	repos := repository.NewRepository()
+	db, err := repository.NewDb()
+	if err != nil {
+		log.Fatalf("Error connect to dd: %s", err.Error())
+	}
+
+	repos := repository.NewRepository(db)
 	services := service.NewService(repos)
 	handlers := handler.NewHandler(services)
 
