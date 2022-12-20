@@ -13,6 +13,7 @@ type Service struct {
 
 type Authorization interface {
 	CreateUser(user todo.User) error
+	GenerateToken(username, password string) (string, error)
 }
 
 type TodoList interface {

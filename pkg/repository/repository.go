@@ -13,6 +13,7 @@ type Repository struct {
 
 type Authorization interface {
 	CreateUser(user todo.User) error
+	GetUser(username, password string) (todo.User, error)
 }
 
 type TodoList interface {
